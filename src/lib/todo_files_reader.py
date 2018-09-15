@@ -35,7 +35,7 @@ def print_pending_tasks(directory='/home/stri/Documents/S5/agenda'):
                             if _todo_parser.get_status(line) == 'pending':
                                 prev_was_task = True
                                 if not title_printed:
-                                    print('#', _path.splitext(name)[0].replace('_', '-'), '\n')
+                                    print('\n#', _path.splitext(name)[0].replace('_', '-'), '\n')
                                     title_printed = True
                                 print('-', _todo_parser.get_title(line))
                             else:
