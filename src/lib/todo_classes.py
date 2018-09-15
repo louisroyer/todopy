@@ -4,6 +4,8 @@
 '''Classes for todo files.'''
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+if __debug__:
+    import todo_parser as _todo_parser
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
@@ -11,11 +13,10 @@ if __name__ != '__main__':
     __date__ = '2018-09-15'
     __version__ = '0.0.1'
 
-STATUS = ('done', 'pending')
 
 class Task:
     def __init__(self, title: str, filename: str, status):
-        assert status in STATUS
+        assert status in _todo_parser.TASK_STATUS, 'Invalid status'
         self._title = title
         self._filename = filename
         self._status = status
@@ -38,6 +39,6 @@ class Task:
     
     @status.setter
     def status(self, value):
-        assert status in STATUS
+        assert status in STATUS, 'Invalid status'
         self._updated_status = True
         self._status = value

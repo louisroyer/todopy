@@ -11,9 +11,11 @@ if __name__ != '__main__':
     __date__ = '2018-09-15'
     __version__ = '0.0.1'
 
+TASK_STATUS = ('done', 'pending')
 
 def is_task(string: str) -> bool:
     '''Return True if the string is a task.'''
+    assert type(string) == str, 'Invalid type argument for is_task function'
     index_bracket_opens = string.find('[')
     index_bracket_closes = string.find(']')
     if index_bracket_opens == -1 or index_bracket_closes == -1:
@@ -42,7 +44,8 @@ def is_task(string: str) -> bool:
 
 def get_title(string: str) -> str:
     '''Return the title of a task.'''
-    assert is_task(string) == True
+    assert type(string) == str, 'Invalid type argument for get_title function'
+    assert is_task(string) == True, 'String must be a valid Task string'
     begin = string.find(']') + 1
     for i, letter in enumerate(string[begin:]):
         if letter != ' ':
@@ -50,3 +53,15 @@ def get_title(string: str) -> str:
             break
     return string[begin+i:]
 
+def get_status(string: str) -> str:
+    '''Return the status of a task.'''
+    assert type(string) == str, 'Invalid type argument for get_status function'
+    assert is_task(string) == True, 'String must be a valid Task string'
+    begin = string.find('[')
+    end = string.find(']')
+    if 'x' in string[begin+1:end]:
+        status = 'done'
+    else:
+        status = 'pending'
+    assert status in TASK_STATUS, 'Invalid return for get_status_function'
+    return status

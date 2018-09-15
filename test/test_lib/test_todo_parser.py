@@ -38,6 +38,8 @@ class TestStrTodoDone(unittest.TestCase):
                 ' - [ x ]my task done',
                 ' -[ x ]my task done')
         cls._test_task_title = 'my task done'
+        cls._test_task_status = 'done'
+        assert cls._test_task_status in _todo_parser.TASK_STATUS, 'Invalid status'
 
     def test_is_task(self):
         '''Test the function is_task.'''
@@ -50,6 +52,13 @@ class TestStrTodoDone(unittest.TestCase):
         for string in self._test_strings:
             with self.subTest(string=string):
                 self.assertEqual(_todo_parser.get_title(string), self._test_task_title)
+
+    def test_status(self):
+        '''Test the function get status.'''
+        for string in self._test_strings:
+            with self.subTest(string=string):
+                self.assertEqual(_todo_parser.get_status(string), self._test_task_status)
+
 
 
 class TestStrTodoPending(unittest.TestCase):
@@ -82,6 +91,8 @@ class TestStrTodoPending(unittest.TestCase):
                 ' -[ ]my pending task',
                 ' - [ ]my pending task')
         cls._test_task_title = 'my pending task'
+        cls._test_task_status = 'pending'
+        assert cls._test_task_status in _todo_parser.TASK_STATUS, 'Invalid status'
 
     def test_is_task(self):
         '''Test the function is_task.'''
@@ -94,6 +105,12 @@ class TestStrTodoPending(unittest.TestCase):
         for string in self._test_strings:
             with self.subTest(string=string):
                 self.assertEqual(_todo_parser.get_title(string), self._test_task_title)
+
+    def test_status(self):
+        '''Test the function get status.'''
+        for string in self._test_strings:
+            with self.subTest(string=string):
+                self.assertEqual(_todo_parser.get_status(string), self._test_task_status)
 
 class TestStrNotATask(unittest.TestCase):
     '''Test a string not representing a task.'''
