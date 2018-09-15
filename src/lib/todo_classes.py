@@ -5,7 +5,10 @@
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 if __debug__:
-    import todo_parser as _todo_parser
+    if __package__:
+        from . import todo_parser as _todo_parser
+    else:
+        import todo_parser as _todo_parser
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
