@@ -15,5 +15,5 @@ if __name__ != '__main__':
 def create_file(time: tuple, directory='/home/stri/Documents/S5/agenda'):
     filepath = _path.join(directory, ''.join((_strftime('%Y_%m_%d', time), '.md')))
     with open(filepath, mode='x') as f:
-        f.write(''.join(('# Séance du ', _strftime('%Y_%m_%d', time))))
+        f.write(''.join(('# Séance du ', _strftime('%Y-%m-%d', time))))
 
