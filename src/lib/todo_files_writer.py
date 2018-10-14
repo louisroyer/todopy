@@ -5,6 +5,8 @@
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 import os.path as _path
+
+from subprocess import call as _call
 from time import strftime as _strftime
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
@@ -17,3 +19,10 @@ def create_file(time: tuple, directory='/home/stri/Documents/S5/agenda'):
     with open(filepath, mode='x') as f:
         f.write(''.join(('# Séance du ', _strftime('%Y-%m-%d', time))))
 
+def edit_file(time: tuple, directory='/home/stri/Documents/S5/agenda'):
+    filepath = _path.join(directory, ''.join((_strftime('%Y_%m_%d', time), '.md')))
+    try:
+        create_file(time, directory)
+    except FileExistsError:
+        pass
+    _call(['vim', filepath])

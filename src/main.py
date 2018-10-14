@@ -25,3 +25,5 @@ def main(arg=None):
         _files_r.print_pending_tasks()
     elif arg == 'create':
         _files_w.create_file(_localtime(_time()))
+    elif arg == 'edit':
+        _files_w.edit_file(_localtime(_time()))
