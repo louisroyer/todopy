@@ -25,25 +25,26 @@ def print_pending_tasks(directory='/home/stri/Documents/S5/agenda'):
     for name in _listdir(directory):
         filepath = _path.join(directory, name)
         if _path.isfile(filepath):
-            if name not in filename_ignore:
-                with open(filepath, mode='r') as f:
-                    prev_was_task = False
-                    title_printed = False
-                    for line in f:
-                        line = line.replace('\n', '')
-                        if _todo_parser.is_task(line):
-                            if _todo_parser.get_status(line) == 'pending':
-                                prev_was_task = True
-                                if not title_printed:
-                                    print('\n#', _path.splitext(name)[0].replace('_', '-'), '\n')
-                                    title_printed = True
-                                print('-', _todo_parser.get_title(line))
-                            else:
-                                prev_was_task = False
-                        elif prev_was_task:
-                            if line.replace(' ', '') != '':
-                                print(' ', line)
-                            else:
-                                prev_was_task = False
-                                print('')
-            
+            if '.md' == _path.splitext(filepath)[1]:
+                if name not in filename_ignore:
+                    with open(filepath, mode='r') as f:
+                        prev_was_task = False
+                        title_printed = False
+                        for line in f:
+                            line = line.replace('\n', '')
+                            if _todo_parser.is_task(line):
+                                if _todo_parser.get_status(line) == 'pending':
+                                    prev_was_task = True
+                                    if not title_printed:
+                                        print('\n#', _path.splitext(name)[0].replace('_', '-'), '\n')
+                                        title_printed = True
+                                    print('-', _todo_parser.get_title(line))
+                                else:
+                                    prev_was_task = False
+                            elif prev_was_task:
+                                if line.replace(' ', '') != '':
+                                    print(' ', line)
+                                else:
+                                    prev_was_task = False
+                                    print('')
+                
