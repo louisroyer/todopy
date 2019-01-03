@@ -25,4 +25,4 @@ def edit_file(time: tuple, directory='/home/stri/Documents/S5/agenda'):
         create_file(time, directory)
     except FileExistsError:
         pass
-    _call(['vim', filepath])
+    _call(['editor', filepath])
