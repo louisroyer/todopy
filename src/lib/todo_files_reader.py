@@ -9,19 +9,21 @@ import os.path as _path
 if __package__:
     from . import todo_parser as _todo_parser
     from . import todo_classes as _todo_classes
+    from . import todo_conf_reader as _todo_conf
 else:
     import todo_parser as _todo_parser
     import todo_classes as _todo_classes
+    import todo_conf_reader as _todo_conf
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
-    __credits__ = '🅬 2018, Louis Royer - CC0-1.0'
-    __date__ = '2018-09-15'
-    __version__ = '0.0.1'
+    __credits__ = '🅬 2018-2020, Louis Royer - CC0-1.0'
+    __date__ = '2020-01-19'
+    __version__ = '0.0.2'
 
-filename_ignore = ('README.md',)
+filename_ignore = _todo_conf.get_filename_ignore()
 
-def print_pending_tasks(directory='/home/stri/Documents/S5/agenda'):
+def print_pending_tasks(directory=_todo_conf.get_directory()):
     for name in _listdir(directory):
         filepath = _path.join(directory, name)
         if _path.isfile(filepath):
