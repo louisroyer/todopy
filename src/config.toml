@@ -1,4 +1,5 @@
-# Move this file to ${XDG_CONFIG_HOME:-$HOME/.config}/todopy/config.toml[config]
+# Move this file to ${XDG_CONFIG_HOME:-$HOME/.config}/todopy/config.toml
+[config]
 # Todopy main directory (default is .local/share/todopy)
 #directory=
 exclude_files=["README.md"]
