@@ -30,4 +30,5 @@ def main(arg=None):
     elif arg == 'edit':
         _files_w.edit_file(_localtime(_time()))
     elif arg == 'commit all':
-        _git.commit_all()
+        _git.commit_all(_localtime(_time()))
+
