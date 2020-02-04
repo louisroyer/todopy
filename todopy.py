@@ -16,6 +16,9 @@ __date__ = '2018-09-15'
 __version__ = '0.0.1'
 
 try:
-    main(_argv[1])
+    main(_argv[1] + ' ' + _argv[2])
 except IndexError:
-    main()
+    try:
+        main(_argv[1])
+    except IndexError:
+        main()

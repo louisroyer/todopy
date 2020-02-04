@@ -4,8 +4,8 @@
 '''Reader for todo files.'''
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
-import os.path as _path
 from subprocess import call as _call
+from time import strftime as _strftime
 
 if __package__:
     from . import todo_conf_reader as _todo_conf
@@ -21,6 +21,6 @@ if __name__ != '__main__':
 
 def commit_all(time=None, directory=_todo_conf.get_directory()):
     if time is not None:
-        filepath = _path.join(directory, ''.join((_strftime('%Y_%m_%d', time), '.md')))
-        _call(['git', 'add', filepath])
-    _call(['git', '-C', directory, '-am'])
+        filepath = ''.join((_strftime('%Y_%m_%d', time), '.md'))
+        _call(['git', '-C', directory, 'add', filepath])
+    _call(['git', '-C', directory, 'commit', '-a'])
