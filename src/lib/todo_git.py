@@ -19,7 +19,7 @@ if __name__ != '__main__':
     __version__ = '0.0.1'
 
 
-def commit_all(directory=_todo_conf.get_directory(time=None)):
+def commit_all(time=None, directory=_todo_conf.get_directory()):
     if time is not None:
         filepath = _path.join(directory, ''.join((_strftime('%Y_%m_%d', time), '.md')))
         _call(['git', 'add', filepath])
