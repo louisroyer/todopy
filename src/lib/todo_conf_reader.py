@@ -16,7 +16,7 @@ if __name__ != '__main__':
 soft_name = 'todopy'
 conf_file = 'config.toml'
 
-def get_filename_ignore():
+def get_filename_ignore() -> str:
     try:
         conf = _basedir.load_config_paths(soft_name)
         for p in conf:
@@ -31,7 +31,7 @@ def get_filename_ignore():
     except FileNotFoundError:
         return ['README.md']
 
-def get_directory():
+def get_directory() -> str:
     try:
         conf = _basedir.load_config_paths(soft_name)
         for p in conf:
