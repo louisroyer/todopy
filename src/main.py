@@ -10,9 +10,11 @@ from time import localtime as _localtime
 if __package__:
     from .lib import todo_files_reader as _files_r
     from .lib import todo_files_writer as _files_w
+    from .lib import todo_git as _git
 else:
     from lib import todo_files_reader as _files_r
     from lib import todo_files_writer as _files_w
+    from lib import todo_git as _git
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
@@ -27,3 +29,5 @@ def main(arg=None):
         _files_w.create_file(_localtime(_time()))
     elif arg == 'edit':
         _files_w.edit_file(_localtime(_time()))
+    elif arg == 'commit all':
+        _git.commit_all()
