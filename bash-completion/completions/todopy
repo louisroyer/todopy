@@ -3,7 +3,13 @@ _todopy_completions()
 {
 	case "${COMP_WORDS[1]}" in
 		edit|create) COMPREPLY=();;
-		commit) COMPREPLY=($(compgen -W "'all'" "${COMP_WORDS[2]}"));;
+		commit)
+			case "${COMP_WORDS[2]}" in
+				all) COMPREPLY=();;
+				*)
+				COMPREPLY=($(compgen -W "'all'" "${COMP_WORDS[2]}"));;
+			esac
+			;;
 	*) COMPREPLY=($(compgen -W "edit commit create" "${COMP_WORDS[1]}"));;
 	esac
 }
