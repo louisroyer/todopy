@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5"
+virtualenv:
+  system_site_packages: true
+
+install:
+  - sudo apt-get install --assume-yes python3-dirspec git
+  - pip install toml
+
+script: python3 -m unittest
+
+notifications:
+  email: false
