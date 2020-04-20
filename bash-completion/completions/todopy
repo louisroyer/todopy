@@ -2,7 +2,7 @@
 _todopy_completions()
 {
 	case "${COMP_WORDS[1]}" in
-		edit|create|ls|ll|help|directory) COMPREPLY=();;
+		edit|create|ls|ll|help|directory|push) COMPREPLY=();;
 		commit)
 			case "${COMP_WORDS[2]}" in
 				all) COMPREPLY=();;
@@ -10,7 +10,7 @@ _todopy_completions()
 				COMPREPLY=($(compgen -W "'all'" "${COMP_WORDS[2]}"));;
 			esac
 			;;
-	*) COMPREPLY=($(compgen -W "edit commit create ls ll help directory" "${COMP_WORDS[1]}"));;
+	*) COMPREPLY=($(compgen -W "edit commit create ls ll help directory push" "${COMP_WORDS[1]}"));;
 	esac
 }
 complete -F _todopy_completions todopy
