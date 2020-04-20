@@ -24,3 +24,6 @@ def commit_all(time=None, directory=_todo_conf.get_directory()):
         filepath = ''.join((_strftime('%Y_%m_%d', time), '.md'))
         _call(['git', '-C', directory, 'add', filepath])
     _call(['git', '-C', directory, 'commit', '-a'])
+
+def push(directory=_todo_conf.get_directory()):
+    _call(['git', '-C', directory, 'push'])

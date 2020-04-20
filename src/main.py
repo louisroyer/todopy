@@ -33,6 +33,8 @@ def main(arg=None):
         _files_w.edit_file(_localtime(_time()))
     elif arg == 'commit all':
         _git.commit_all(_localtime(_time()))
+    elif arg == 'push':
+        _git.push()
     elif arg == 'directory':
         _shell.directory()
     elif arg == 'ls':
@@ -45,6 +47,7 @@ def main(arg=None):
         print('\tcreate:       create a todopy file for today’s tasks')
         print('\tedit:         edit todays’s tasks file')
         print('\tcommit all:   commit all changes')
+        print('\tpush:         push all committed changes')
         print('\tdirectory:    print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)')
         print('\tls:           list files of tasks directory')
         print('\tll:           list files of tasks directory as long listing format')
