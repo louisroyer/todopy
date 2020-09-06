@@ -6,11 +6,12 @@
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 from dirspec import basedir as _basedir
 from toml import decoder as _decoder
+from os import path as _path
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
     __credits__ = '🅬 2020, Louis Royer - CC0-1.0'
-    __date__ = '2020-01-19'
+    __date__ = '2020-09-06'
     __version__ = '0.0.1'
 
 soft_name = 'todopy'
@@ -40,7 +41,7 @@ def get_directory() -> str:
                 if c is not None:
                     d = c.get('directory')
                     if d is not None:
-                        return d
+                        return _path.expandvars(_path.expanduser(d))
         #default
         return str(_basedir.save_data_path(soft_name), 'utf-8')
     except FileNotFoundError:
