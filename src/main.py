@@ -27,9 +27,9 @@ if __name__ != '__main__':
 def main(arg=None):
     if arg is None:
         _files_r.print_pending_tasks()
-    elif arg == 'create':
+    elif arg in ('create', '--create', '-c'):
         _files_w.create_file(_localtime(_time()))
-    elif arg == 'edit':
+    elif arg in ('edit', '--edit', '-c'):
         _files_w.edit_file(_localtime(_time()))
     elif arg == 'commit all':
         _git.commit_all(_localtime(_time()))
@@ -41,14 +41,14 @@ def main(arg=None):
         _shell.ls()
     elif arg == 'll':
         _shell.ll()
-    elif arg == 'help':
+    elif arg in ('help', '-h', '--help'):
         print('usage: todopy [OPTION]')
         print('lists all tasks')
-        print('\tcreate:       create a todopy file for today’s tasks')
-        print('\tedit:         edit todays’s tasks file')
-        print('\tcommit all:   commit all changes')
-        print('\tpush:         push all committed changes')
-        print('\tdirectory:    print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)')
-        print('\tls:           list files of tasks directory')
-        print('\tll:           list files of tasks directory as long listing format')
-        print('\thelp:         display this help')
+        print('\tcreate, --create, -c: create a todopy file for today’s tasks')
+        print('\tedit, --edit, -e:     edit todays’s tasks file')
+        print('\tcommit all:           commit all changes')
+        print('\tpush:                 push all committed changes')
+        print('\tdirectory:            print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)')
+        print('\tls:                   list files of tasks directory')
+        print('\tll:                   list files of tasks directory as long listing format')
+        print('\thelp, --help, -h:     display this help')
