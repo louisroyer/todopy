@@ -6,6 +6,8 @@
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 from time import time as _time
 from time import localtime as _localtime
+from sys import exit as _exit
+from sys import stderr as _stderr
 
 if __package__:
     from .lib import todo_files_reader as _files_r
@@ -23,6 +25,18 @@ if __name__ != '__main__':
     __credits__ = '🅬 2018-2020, Louis Royer - CC0-1.0'
     __date__ = '2020-04-20'
     __version__ = '0.0.3'
+
+def get_help():
+    return '''usage: todopy [OPTION]
+lists all tasks
+\tcreate, --create, -c: create a todopy file for today’s tasks
+\tedit, --edit, -e:     edit todays’s tasks file
+\tcommit all:           commit all changes
+\tpush:                 push all committed changes
+\tdirectory:            print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)
+\tls:                   list files of tasks directory
+\tll:                   list files of tasks directory as long listing format')
+\thelp, --help, -h:     display this help'''
 
 def main(arg=None):
     if arg is None:
@@ -42,13 +56,7 @@ def main(arg=None):
     elif arg == 'll':
         _shell.ll()
     elif arg in ('help', '-h', '--help'):
-        print('usage: todopy [OPTION]')
-        print('lists all tasks')
-        print('\tcreate, --create, -c: create a todopy file for today’s tasks')
-        print('\tedit, --edit, -e:     edit todays’s tasks file')
-        print('\tcommit all:           commit all changes')
-        print('\tpush:                 push all committed changes')
-        print('\tdirectory:            print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)')
-        print('\tls:                   list files of tasks directory')
-        print('\tll:                   list files of tasks directory as long listing format')
-        print('\thelp, --help, -h:     display this help')
+        print(get_help())
+    else:
+        print(get_help(), file=_stderr)
+        _exit(1)
