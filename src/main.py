@@ -35,7 +35,7 @@ lists all tasks
 \tpush:                 push all committed changes
 \tdirectory:            print todopy’s tasks directory path (can be used as `cd $(todopy directory)`)
 \tls:                   list files of tasks directory
-\tll:                   list files of tasks directory as long listing format')
+\tll:                   list files of tasks directory as long listing format
 \thelp, --help, -h:     display this help'''
 
 def main(arg=None):
