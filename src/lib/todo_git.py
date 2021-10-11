@@ -14,7 +14,7 @@ else:
 
 if __name__ != '__main__':
     __author__ = 'Louis Royer'
-    __credits__ = '🅬 2018-2020, Louis Royer - CC0-1.0'
+    __credits__ = '🄯 2018-2020, Louis Royer - CC0-1.0'
     __date__ = '2020-02-04'
     __version__ = '0.0.1'
 

@@ -5,8 +5,7 @@ virtualenv:
   system_site_packages: true
 
 install:
-  - sudo apt-get install --assume-yes python3-dirspec git
-  - pip install toml
+  - sudo apt-get install --assume-yes python3-xdg git python3-toml
 
 script: python3 -m unittest
 
