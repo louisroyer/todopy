@@ -1,11 +1,16 @@
 language: python
+dist: focal
 python:
-  - "3.5"
+  - "3.9"
 virtualenv:
   system_site_packages: true
 
-install:
-  - sudo apt-get install --assume-yes python3-xdg git python3-toml
+addons:
+  apt:
+    packages:
+      - git
+      - python3-toml
+      - python3-xdg
 
 script: python3 -m unittest
 
