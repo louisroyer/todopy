@@ -5,7 +5,6 @@ addons:
     packages:
       - git
       - python3
-      - python3-unittest
       - python3-toml
       - python3-xdg
 
