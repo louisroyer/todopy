@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 _todopy_completions()
 {
 	case "${COMP_WORDS[1]}" in
